@@ -6,8 +6,7 @@
     <div class="orb orb-2"></div>
     <div class="grid-pattern"></div>
 
-    <!-- Cursor Follower -->
-    <div class="cursor-follower" ref="cursorRef"></div>
+
 
     <div class="container hero-container">
       <div class="hero-grid">
@@ -172,7 +171,6 @@ const displayStats = [
 ]
 
 const heroRef    = ref(null)
-const cursorRef  = ref(null)
 const terminalRef = ref(null)
 
 // ─── Typing animation ────────────────────────────────────────────
@@ -209,20 +207,6 @@ const tickLive = () => {
   liveTimer = setTimeout(tickLive, 1800 + Math.random() * 2000)
 }
 
-// ─── Cursor follower ─────────────────────────────────────────────
-let qx = null, qy = null
-
-const onMouseMove = (e) => {
-  if (!cursorRef.value) return
-  if (!qx) {
-    const gsap = window.gsap
-    if (!gsap) return
-    qx = gsap.quickTo(cursorRef.value, 'x', { duration: 0.5, ease: 'power3' })
-    qy = gsap.quickTo(cursorRef.value, 'y', { duration: 0.5, ease: 'power3' })
-  }
-  qx(e.clientX)
-  qy(e.clientY)
-}
 
 // ─── GSAP entrance animations ────────────────────────────────────
 const initGsap = () => {
@@ -303,7 +287,6 @@ const startAutoScroll = () => {
 onMounted(() => {
   typeLoop()
   setTimeout(tickLive, 2000)
-  document.addEventListener('mousemove', onMouseMove)
   setTimeout(() => {
     initGsap()
     startAutoScroll()
@@ -314,7 +297,6 @@ onUnmounted(() => {
   clearTimeout(timer)
   clearTimeout(liveTimer)
   clearInterval(autoScrollTimer2)
-  document.removeEventListener('mousemove', onMouseMove)
 })
 </script>
 
@@ -367,18 +349,6 @@ onUnmounted(() => {
   pointer-events: none;
 }
 
-/* ─── Cursor follower ──────────────────────────── */
-.cursor-follower {
-  position: fixed;
-  width: 10px; height: 10px;
-  background: var(--cyprus-main);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  opacity: 0.5;
-  mix-blend-mode: multiply;
-}
 
 /* ─── Layout ───────────────────────────────────── */
 .hero-container { width: 100%; }
