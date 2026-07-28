@@ -21,8 +21,8 @@ export const portfolioData = {
     github: "https://github.com/Alfin452",
     whatsapp: "https://wa.me/6285821875404",
     whatsappDisplay: "+62 858-2187-5404",
-    instagram: "https://instagram.com/alfinn.finn",
-    instagramHandle: "@alfinn.finn",
+    instagram: "https://www.instagram.com/alfinn.finn_?igsh=cGwzNXcwYm9qb2V1",
+    instagramHandle: "@alfinn.finn_",
     discord: "https://discord.gg/CgcGz6XVse",
     discordServerName: "Finn Dev Community"
   },
