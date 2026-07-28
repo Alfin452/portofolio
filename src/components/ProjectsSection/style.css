@@ -1,0 +1,198 @@
+.projects-section {
+  position: relative;
+  padding: 8rem 0;
+  background-color: var(--bg-card); /* F3F4F6 as seen in dribbble background */
+  overflow: hidden;
+}
+
+.projects-bg-text-wrapper {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.projects-bg-text {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 18vw, 20rem);
+  color: #E5E7EB;
+  -webkit-text-stroke: 0;
+  margin: 0;
+  line-height: 0.8;
+}
+
+.projects-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.projects-header {
+  margin-bottom: 4rem;
+}
+
+.projects-nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  border-top: 1px solid #E5E7EB;
+  padding-top: 2rem;
+}
+
+.filter-minimal-tabs {
+  display: flex;
+  gap: 2rem;
+}
+
+.filter-minimal-btn {
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.filter-minimal-btn:hover {
+  color: var(--text-dark);
+}
+
+.filter-minimal-btn.active {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.filter-minimal-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--text-dark);
+}
+
+/* Grid */
+.dribbble-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+.dribbble-project-card {
+  cursor: pointer;
+  group: true;
+}
+
+.dribbble-card-image {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #FFFFFF;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-flat);
+  transition: all 0.4s ease;
+}
+
+.dribbble-project-card:hover .dribbble-card-image {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.dribbble-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.dribbble-project-card:hover .dribbble-card-image img {
+  transform: scale(1.05);
+}
+
+.card-hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.dribbble-project-card:hover .card-hover-overlay {
+  opacity: 1;
+}
+
+.hover-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--bg-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.5);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dribbble-project-card:hover .hover-circle {
+  transform: scale(1);
+}
+
+.dribbble-card-info {
+  margin-top: 1.5rem;
+}
+
+.dribbble-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+}
+
+.dribbble-card-meta {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.meta-pill {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--bg-white);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid #E5E7EB;
+}
+
+@media (max-width: 768px) {
+  .projects-nav-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  
+  .filter-minimal-tabs {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .dribbble-projects-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

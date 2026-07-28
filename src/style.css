@@ -1,33 +1,25 @@
 /* ==========================================================================
-   DEVELOPER PORTFOLIO - CRISP & HIGH-CONTRAST DESIGN SYSTEM
-   Base: Crisp White (#FFFFFF) / Dark Mode (#0A0F1D)
-   Primary Accent: Solid Cyprus (#004741)
-   Secondary Accent: Solid Sand (#F0EDE4)
-   No Ambient Blurs - Sharp, Clear Color Separation
+   DEVELOPER PORTFOLIO - PREMIUM MINIMALIST / BRUTALISM
+   Base: Pure White / Pitch Black
    Developer: Muhammad Alfin Nur Huda (Finn)
    ========================================================================== */
 
 :root {
-  /* Crisp Cyprus & Sand Palette (Light Mode) */
-  --cyprus-main: #004741;     /* Deep Emerald Cyprus */
-  --cyprus-dark: #002D29;     /* Dark Cyprus */
-  --cyprus-light: #00665D;    /* Vibrant Cyprus */
-  --cyprus-border: #004741;
+  /* Crisp Minimalist Palette */
+  --bg-white: #FFFFFF;
+  --bg-subtle: #F9FAFB;
+  --bg-card: #F3F4F6;
+  --bg-dark-section: #111111;
+  --bg-dark-card: #1C1C1C;
 
-  --sand-main: #F0EDE4;       /* Warm Sand/Cream */
-  --sand-dark: #E0DCCA;       /* Rich Sand Accent */
-  --sand-border: #D4CFBD;
+  --text-dark: #09090B;
+  --text-muted: #52525B;
+  --text-light: #FAFAFA;
+  --text-light-muted: #A1A1AA;
 
-  /* Solid Base System */
-  --bg-white: #ffffff;
-  --bg-subtle: #F6F5F0;
-  --bg-card: #ffffff;
-  --bg-dark-slate: #0f172a;
-
-  --text-primary: #004741;   /* Cyprus */
-  --text-dark: #0f172a;      /* Dark Slate */
-  --text-muted: #334155;     /* Dark Gray */
-  --text-light: #F0EDE4;     /* Sand Text for Dark Backgrounds */
+  --accent-black: #000000;
+  --accent-white: #FFFFFF;
+  --accent-green: #10B981; /* For 'Available for New Project' dot */
 
   /* Fonts */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -35,191 +27,15 @@
   --font-mono: 'Fira Code', monospace;
 
   /* Shadows & Borders */
-  --shadow-flat: 0 4px 14px rgba(0, 71, 65, 0.08);
-  --shadow-hover: 0 10px 25px rgba(0, 71, 65, 0.16);
+  --shadow-flat: 0 4px 14px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.08);
 
-  --radius-bento: 2rem;
-  --radius-card: 1.25rem;
+  --radius-bento: 1.5rem;
+  --radius-card: 1rem;
   --radius-pill: 9999px;
   --radius-md: 12px;
   --radius-sm: 8px;
 }
-
-/* Dark Mode Override System */
-html.dark {
-  color-scheme: dark;
-  --bg-white: #0b1329;
-  --bg-subtle: #131d38;
-  --bg-card: #172347;
-  --bg-dark-slate: #050a17;
-
-  --text-dark: #f8fafc;
-  --text-muted: #cbd5e1;
-  --text-primary: #2dd4bf;
-
-  --cyprus-main: #2dd4bf;
-  --cyprus-dark: #14b8a6;
-  --cyprus-light: #5eead4;
-  --cyprus-border: #2dd4bf;
-
-  --sand-main: #1e293b;
-  --sand-dark: #334155;
-  --sand-border: #475569;
-
-  --shadow-flat: 0 4px 14px rgba(0, 0, 0, 0.4);
-  --shadow-hover: 0 10px 25px rgba(45, 212, 191, 0.2);
-}
-
-html.dark body {
-  background-color: var(--bg-white);
-  color: var(--text-dark);
-}
-
-html.dark .glass-card,
-html.dark .glass-panel {
-  background: var(--bg-card);
-  border-color: rgba(255, 255, 255, 0.1);
-  color: var(--text-dark);
-}
-
-
-
-html.dark .mobile-drawer {
-  background: #0a0f1d;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Dark Mode: Glassmorphism Capsule */
-html.dark .navbar-capsule {
-  background: rgba(11, 19, 41, 0.85);
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
-    0 8px 32px -4px rgba(0, 0, 0, 0.4);
-}
-
-html.dark .navbar-capsule.scrolled {
-  background: rgba(11, 19, 41, 0.95);
-  border-color: rgba(45, 212, 191, 0.3);
-  box-shadow: 
-    inset 0 1px 0 0 rgba(45, 212, 191, 0.15),
-    0 12px 35px -5px rgba(0, 0, 0, 0.5);
-}
-
-/* Performance & Anti-Stutter for View Transitions */
-.disable-transitions,
-.disable-transitions * {
-  transition: none !important;
-  will-change: auto !important;
-}
-
-::view-transition-group(root) {
-  animation: none;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-
-::view-transition-old(root) {
-  z-index: 1;
-}
-
-::view-transition-new(root) {
-  z-index: 999999;
-  will-change: clip-path;
-}
-
-/* ===== COMPREHENSIVE DARK MODE OVERRIDES ===== */
-/* Ensures ALL visible text/elements adapt to dark backgrounds */
-
-/* Global text color overrides */
-html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
-  color: var(--text-dark);
-}
-
-html.dark p, html.dark span, html.dark a, html.dark li, html.dark label {
-  color: inherit;
-}
-
-/* Section backgrounds */
-html.dark .bg-section-white {
-  background-color: var(--bg-white);
-  color: var(--text-dark);
-}
-
-html.dark .bg-section-sand {
-  background-color: var(--sand-main);
-  color: var(--text-dark);
-}
-
-/* Badges */
-html.dark .badge-primary {
-  background: rgba(45, 212, 191, 0.12);
-  border-color: var(--cyprus-main);
-  color: var(--cyprus-main);
-}
-
-html.dark .badge-sand {
-  background: var(--sand-main);
-  border-color: var(--sand-dark);
-  color: var(--text-dark);
-}
-
-/* Section headers */
-html.dark .section-title {
-  color: var(--text-dark);
-}
-
-html.dark .section-description {
-  color: var(--text-muted);
-}
-
-html.dark .section-tag {
-  background: var(--sand-main);
-  border-color: var(--sand-dark);
-  color: var(--cyprus-main);
-}
-
-/* Cards and Bento Boxes */
-html.dark .bento-sand {
-  background: var(--sand-main);
-  border-color: var(--sand-dark);
-  color: var(--text-dark);
-}
-
-html.dark .bento-white {
-  background: var(--bg-card);
-  border-color: rgba(255, 255, 255, 0.1);
-  color: var(--text-dark);
-}
-
-/* Buttons */
-html.dark .btn-secondary {
-  background: var(--sand-main);
-  color: var(--cyprus-main);
-  border-color: var(--sand-dark);
-}
-
-html.dark .btn-secondary:hover {
-  background: var(--sand-dark);
-}
-
-/* Borders that use hardcoded light colors */
-html.dark .glass-card,
-html.dark .glass-panel {
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-/* App wrapper */
-html.dark .app-wrapper {
-  background-color: var(--bg-white);
-  color: var(--text-dark);
-}
-
-
 
 /* Reset & Base */
 *, *::before, *::after {
@@ -229,8 +45,7 @@ html.dark .app-wrapper {
 }
 
 html {
-  scroll-behavior: smooth;
-  color-scheme: light;
+  scroll-behavior: auto; /* Let GSAP handle smooth scrolling if needed */
   font-size: 16px;
 }
 
@@ -241,7 +56,6 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Scrollbar */
@@ -249,257 +63,134 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-subtle);
+  background: var(--bg-white);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--cyprus-main);
+  background: var(--text-muted);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--cyprus-dark);
+  background: var(--text-dark);
 }
 
 /* Container */
 .container {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* Section Background Rhythm */
-.bg-section-white {
-  background-color: var(--bg-white);
-  color: var(--text-dark);
-}
-
-.bg-section-sand {
-  background-color: var(--sand-main);
-  color: var(--text-dark);
-}
-
-.bg-section-cyprus {
-  background-color: var(--cyprus-main);
-  color: var(--sand-main);
-}
-
-.bg-section-cyprus .section-title {
-  color: #ffffff;
-}
-
-.bg-section-cyprus .section-description {
-  color: var(--sand-dark);
-}
-
-.bg-section-cyprus .section-tag {
-  background: rgba(240, 237, 228, 0.15);
-  color: var(--sand-main);
-  border-color: rgba(240, 237, 228, 0.3);
+  padding: 0 2rem;
 }
 
 /* Typography Utilities */
-.gradient-text {
-  color: var(--cyprus-main);
-  font-weight: 800;
-}
-
-.flex-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.flex-tag-sm {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-/* Cards & Bento Boxes */
-.glass-card {
-  background: var(--bg-card);
-  border: 1.5px solid #e2e8f0;
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-flat);
-  transition: all 0.25s ease;
-}
-
-.glass-card:hover {
-  border-color: var(--cyprus-main);
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-3px);
-}
-
-.glass-panel {
-  background: var(--bg-card);
-  border: 1.5px solid #e2e8f0;
-  border-radius: var(--radius-card);
-}
-
-/* Bento Boxes with Distinct Color Blocks */
-.bento-box {
-  border-radius: var(--radius-bento);
-  padding: 2.25rem;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.bento-cyprus {
-  background: var(--cyprus-main);
-  color: var(--sand-main);
-  border: 2px solid var(--cyprus-main);
-  box-shadow: 0 10px 30px rgba(0, 71, 65, 0.2);
-}
-
-.bento-cyprus:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 15px 35px rgba(0, 71, 65, 0.3);
-}
-
-.bento-sand {
-  background: var(--sand-main);
-  color: var(--cyprus-main);
-  border: 2px solid var(--sand-dark);
-  box-shadow: var(--shadow-flat);
-}
-
-.bento-sand:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--cyprus-main);
-}
-
-.bento-white {
-  background: var(--bg-card);
-  color: var(--cyprus-main);
-  border: 2px solid #e2e8f0;
-  box-shadow: var(--shadow-flat);
-}
-
-.bento-white:hover {
-  border-color: var(--cyprus-main);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-}
-
-.bento-number {
-  font-size: 3.25rem;
-  font-weight: 900;
+.font-display {
   font-family: var(--font-display);
-  line-height: 1;
-  margin-bottom: 1.25rem;
-  opacity: 0.25;
 }
 
-/* Crisp Badges */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.9rem;
-  border-radius: 9999px;
-  font-size: 0.825rem;
-  font-weight: 700;
-}
-
-.badge-primary {
-  background: rgba(0, 71, 65, 0.08);
-  border: 1.5px solid var(--cyprus-main);
-  color: var(--cyprus-main);
-}
-
-.badge-sand {
-  background: var(--sand-main);
-  border: 1.5px solid var(--sand-dark);
-  color: var(--cyprus-main);
-}
-
-.pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--cyprus-main);
-}
-
-/* Section Header */
-.section-header {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 3.5rem auto;
-}
-
-.section-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 800;
+.text-huge {
+  font-size: clamp(3rem, 10vw, 12rem);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--cyprus-main);
-  margin-bottom: 0.75rem;
-  background: var(--sand-main);
-  padding: 0.35rem 0.9rem;
-  border-radius: 9999px;
-  border: 1.5px solid var(--sand-dark);
 }
 
-.section-title {
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--bg-card);
+}
+
+/* Section Header Typography */
+.section-tag-slash {
   font-family: var(--font-display);
   font-size: 2.5rem;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin-bottom: 1rem;
+  font-weight: 500;
   color: var(--text-dark);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
-.section-description {
-  color: var(--text-muted);
-  font-size: 1.05rem;
-  font-weight: 500;
+/* Pill Badges */
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: var(--bg-white);
+  border: 1px solid #E4E4E7;
+  color: var(--text-dark);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
 }
 
 /* Buttons */
-.btn {
+.btn-pill-dark {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1.75rem;
-  border-radius: var(--radius-md);
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--text-dark);
+  color: var(--text-light);
   font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.25s ease;
+  font-weight: 500;
   text-decoration: none;
   border: none;
-  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.btn-primary {
-  background: var(--cyprus-main);
-  color: #ffffff;
-  border: 2px solid var(--cyprus-main);
-  box-shadow: 0 4px 14px rgba(0, 71, 65, 0.25);
-}
-
-.btn-primary:hover {
-  background: var(--cyprus-dark);
-  border-color: var(--cyprus-dark);
+.btn-pill-dark:hover {
+  background: #27272A;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 71, 65, 0.35);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.btn-secondary {
-  background: var(--sand-main);
-  color: var(--cyprus-main);
-  border: 2px solid var(--sand-dark);
+.btn-pill-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--bg-white);
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid #E4E4E7;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.btn-secondary:hover {
-  background: var(--sand-dark);
-  border-color: var(--cyprus-main);
+.btn-pill-light:hover {
+  background: var(--bg-subtle);
   transform: translateY(-2px);
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-white);
+  border: 1px solid #E4E4E7;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.icon-btn:hover {
+  background: var(--bg-subtle);
+  transform: translateY(-2px);
+}
+
+/* GSAP Defaults */
+.gsap-reveal {
+  opacity: 0;
+  visibility: hidden;
 }

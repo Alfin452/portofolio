@@ -1,0 +1,133 @@
+.code-section {
+  padding: 6rem 0;
+  background-color: var(--bg-dark-slate);
+  color: var(--sand-main);
+}
+
+.code-section .section-title {
+  color: #ffffff;
+}
+
+.code-section .section-description {
+  color: var(--sand-dark);
+}
+
+.code-window {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--cyprus-main);
+  border: 1.5px solid var(--cyprus-dark);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  color: var(--sand-main);
+}
+
+.window-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: var(--cyprus-dark);
+  border-bottom: 1px solid rgba(240, 237, 228, 0.15);
+}
+
+.window-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot-cyprus { background: #ff5f56; }
+.dot-sand { background: #ffbd2e; }
+.dot-light { background: #27c93f; }
+
+.window-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: rgba(240, 237, 228, 0.7);
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: #fff;
+  background: rgba(240, 237, 228, 0.1);
+}
+
+.tab-btn.active {
+  color: var(--cyprus-main);
+  background: var(--sand-main);
+  font-weight: 700;
+}
+
+.copy-btn {
+  background: rgba(240, 237, 228, 0.1);
+  border: 1px solid rgba(240, 237, 228, 0.2);
+  color: var(--sand-main);
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(240, 237, 228, 0.2);
+}
+
+.code-body {
+  padding: 1.5rem;
+}
+
+.code-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed rgba(240, 237, 228, 0.15);
+}
+
+.snippet-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--sand-main);
+}
+
+.code-pre {
+  margin: 0;
+  overflow-x: auto;
+  color: #F0EDE4;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .window-header {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+}

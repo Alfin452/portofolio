@@ -1,0 +1,12 @@
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-white);
+  color: var(--text-dark);
+  position: relative;
+}
+
+main {
+  flex-grow: 1;
+}

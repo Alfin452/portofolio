@@ -1,0 +1,146 @@
+.experience-section {
+  position: relative;
+  padding: 8rem 0;
+  background-color: var(--bg-dark-section); /* #111111 */
+  color: var(--text-light); /* #FAFAFA */
+  overflow: hidden;
+}
+
+.exp-bg-text-wrapper {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.15; /* Subtler in dark mode */
+}
+
+.exp-bg-text {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 15vw, 18rem);
+  color: transparent;
+  -webkit-text-stroke: 2px #3F3F46;
+  margin: 0;
+  line-height: 0.8;
+}
+
+.exp-container {
+  position: relative;
+  z-index: 2;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 5rem;
+  border-bottom: 1px solid #27272A;
+  padding-bottom: 2rem;
+}
+
+.section-tag-slash.text-light {
+  color: var(--text-light);
+}
+
+.exp-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-light-muted);
+}
+
+/* List / Rows */
+.exp-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.exp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 0;
+  border-bottom: 1px solid #27272A;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.exp-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.exp-company {
+  flex: 2;
+}
+
+.exp-company h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.exp-role {
+  font-size: 1.1rem;
+  color: var(--text-light-muted);
+}
+
+.exp-row:hover .exp-company h3 {
+  color: var(--accent-green); /* Subtle color pop on hover */
+}
+
+.exp-hover-indicator {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.4s ease;
+  color: var(--text-light-muted);
+}
+
+.exp-row:hover .exp-hover-indicator {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.exp-date {
+  flex: 1;
+  text-align: right;
+  font-size: 1.1rem;
+  color: var(--text-light-muted);
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 768px) {
+  .exp-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .exp-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem 0;
+  }
+  
+  .exp-row:hover {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .exp-hover-indicator {
+    display: none;
+  }
+
+  .exp-date {
+    text-align: left;
+    font-size: 0.9rem;
+  }
+}
