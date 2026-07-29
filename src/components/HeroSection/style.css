@@ -45,7 +45,7 @@
 
 .dribbble-text-outline {
   display: inline-block;
-  color: transparent !important;
+  color: var(--bg-white) !important; /* Fix Android webkit bug by using background color instead of transparent */
   -webkit-text-stroke: 4px #09090b !important;
 }
 
