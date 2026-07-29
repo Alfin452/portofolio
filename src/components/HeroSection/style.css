@@ -294,12 +294,22 @@
     display: none !important;
   }
   
+  .hero-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 18vh;
+    gap: 2rem;
+  }
+
   .hero-content-left {
-    top: 25%;
-    left: 5%;
+    position: relative;
+    top: auto;
+    left: auto;
     margin-top: 0;
-    max-width: 90%;
+    max-width: 95%;
     transform: none !important;
+    order: 1;
   }
 
   .hero-title {
@@ -307,11 +317,13 @@
   }
 
   .hero-content-right {
-    top: 55%;
-    left: 5%;
+    position: relative;
+    top: auto;
+    left: auto;
     right: auto;
-    transform: scale(0.85);
+    transform: scale(0.95);
     transform-origin: top left;
+    order: 2;
   }
 
   .scroll-indicator-wrapper {
@@ -322,7 +334,7 @@
   }
 
   .hero-image-wrapper {
-    height: 60vh;
+    height: 50vh;
   }
 
   .hero-bg-row {
