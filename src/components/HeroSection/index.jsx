@@ -159,10 +159,10 @@ const HeroSection = () => {
       {/* Noise Texture Overlay */}
       <div className="noise-overlay"></div>
 
-      {/* Stacked Solid Text Background */}
+      {/* Stacked Outline Text Background */}
       <div className="hero-bg-text-wrapper">
         <div className="hero-bg-row left-align">
-          <span className="dribbble-text-solid bg-text-alfin">ALFIN</span>
+          <span className="dribbble-text-outline bg-text-alfin">ALFIN</span>
         </div>
         <div className="hero-bg-row right-align">
           <span className="dribbble-text-solid bg-text-huda">HUDA</span>
