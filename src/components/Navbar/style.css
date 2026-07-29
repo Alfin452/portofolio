@@ -164,7 +164,16 @@
 
 @media (max-width: 1024px) {
   .nav-center, .btn-nav-cta {
-    display: none;
+    display: none !important;
+  }
+  .nav-container {
+    justify-content: space-between;
+  }
+  .availability-pill {
+    padding: 0.5rem 1rem;
+  }
+  .avail-text {
+    font-size: 0.75rem;
   }
   .mobile-toggle {
     display: block;
