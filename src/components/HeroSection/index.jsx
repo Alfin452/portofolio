@@ -77,23 +77,8 @@ const HeroSection = () => {
     return () => ctx.revert();
   }, []);
 
-  // Spotlight Effect Mouse Tracking
+  // Spotlight Effect Mouse Tracking (Removed)
   useEffect(() => {
-    const handleMouseMoveSpotlight = (e) => {
-      if (!imgRef.current || !heroRef.current) return;
-      const rect = imgRef.current.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      heroRef.current.style.setProperty('--img-x', `${x}px`);
-      heroRef.current.style.setProperty('--img-y', `${y}px`);
-    };
-
-    const section = heroRef.current;
-    if (section) {
-      section.addEventListener('mousemove', handleMouseMoveSpotlight);
-    }
-
     const magneticElements = heroRef.current.querySelectorAll('.hero-cta, .social-icon-btn');
     
     const handleMagneticMove = (e) => {
@@ -146,7 +131,6 @@ const HeroSection = () => {
 
     return () => {
       window.removeEventListener('scroll', handleScrollParallax);
-      if (heroRef.current) heroRef.current.removeEventListener('mousemove', handleMouseMoveSpotlight);
       magneticElements.forEach(el => {
         el.removeEventListener('mousemove', handleMagneticMove);
         el.removeEventListener('mouseleave', handleMagneticLeave);
@@ -233,18 +217,13 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Center: Exact Cutout Image (Moved outside container to anchor exactly to bottom of section) */}
+      {/* Center Image (Exact Cutout) */}
       <div className="hero-image-wrapper">
         <img 
           src="/assets/images/profilebgremove.png" 
-          alt="Alfin Huda Base" 
-          className="hero-cutout-img grayscale-base" 
+          alt="Muhammad Alfin Nur Huda" 
+          className="hero-cutout-img" 
           ref={imgRef} 
-        />
-        <img 
-          src="/assets/images/profilebgremove.png" 
-          alt="Alfin Huda Color" 
-          className="hero-cutout-img color-overlay" 
         />
       </div>
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { portfolioData } from '../../data/portfolioData';
+import * as LucideIcons from 'lucide-react';
 import './style.css';
 
 const SkillsSection = () => {
@@ -15,15 +16,15 @@ const SkillsSection = () => {
     if (!gsap || !ScrollTrigger) return;
 
     let ctx = gsap.context(() => {
-      // Parallax text
-      gsap.to('.skills-bg-text', {
-        yPercent: -15,
+      // Horizontal Marquee text
+      gsap.to('.skills-bg-text-inner', {
+        x: '-100vw',
         ease: 'none',
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top bottom',
           end: 'bottom top',
-          scrub: true
+          scrub: 1
         }
       });
 
@@ -38,28 +39,75 @@ const SkillsSection = () => {
         }
       });
 
-      // Stagger items
-      gsap.from('.skill-minimal-item', {
-        y: 30,
+      // Stagger cards
+      gsap.from('.skill-brutalist-card, .tool-badge', {
+        y: 40,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.05,
+        duration: 0.6,
+        stagger: 0.1,
         ease: 'power2.out',
+        clearProps: 'transform',
         scrollTrigger: {
           trigger: gridRef.current,
-          start: 'top 80%',
+          start: 'top 85%',
         }
       });
+      
+      // Animate progress bars
+      gsap.fromTo('.brutalist-progress-fill', 
+        { width: '0%' },
+        {
+          width: (index, target) => target.dataset.level + '%',
+          duration: 1.5,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: 'top 80%',
+          }
+        }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
+  const renderSkillCards = (skillsArray) => {
+    return skillsArray.map((skill, idx) => {
+      const IconComponent = LucideIcons[skill.icon];
+      return (
+        <div key={idx} className="skill-brutalist-card">
+          <div className="skill-card-header">
+            <div className="skill-icon-wrapper">
+              {IconComponent && <IconComponent size={24} strokeWidth={2} />}
+            </div>
+            <div className="skill-title-wrapper">
+              <h4 className="skill-name">{skill.name}</h4>
+              <p className="skill-experience">{skill.experience}</p>
+            </div>
+          </div>
+          <div className="skill-card-footer">
+            <div className="brutalist-progress-track">
+              <div 
+                className="brutalist-progress-fill" 
+                data-level={skill.level}
+                style={{ width: `${skill.level}%` }}
+              ></div>
+            </div>
+            <span className="skill-level-text">{skill.level}%</span>
+          </div>
+        </div>
+      );
+    });
+  };
+
   return (
     <section className="skills-section" id="skills" ref={sectionRef}>
       
-      <div className="skills-bg-text-wrapper">
-        <h2 className="skills-bg-text text-huge text-outline">SKILLS</h2>
+      {/* Giant Background Marquee */}
+      <div className="skills-bg-marquee">
+        <div className="skills-bg-text-inner">
+          <span className="skills-text-outline">SKILLS SKILLS SKILLS SKILLS SKILLS</span>
+        </div>
       </div>
 
       <div className="container skills-container">
@@ -68,37 +116,29 @@ const SkillsSection = () => {
           <h2 className="section-tag-slash">/SKILLS & TOOLS</h2>
         </div>
 
-        <div className="skills-minimal-grid" ref={gridRef}>
+        <div className="skills-brutalist-grid" ref={gridRef}>
           {/* Backend */}
           <div className="skills-group">
-            <h3 className="group-title">Backend & Architecture</h3>
-            <div className="pills-wrapper">
-              {backend.map((skill, idx) => (
-                <div key={idx} className="skill-minimal-item">
-                  {skill.name}
-                </div>
-              ))}
+            <h3 className="group-title">BACKEND & ARCHITECTURE</h3>
+            <div className="cards-wrapper">
+              {renderSkillCards(backend)}
             </div>
           </div>
 
           {/* Frontend */}
           <div className="skills-group">
-            <h3 className="group-title">Frontend & UI/UX</h3>
-            <div className="pills-wrapper">
-              {frontend.map((skill, idx) => (
-                <div key={idx} className="skill-minimal-item">
-                  {skill.name}
-                </div>
-              ))}
+            <h3 className="group-title">FRONTEND & UI/UX</h3>
+            <div className="cards-wrapper">
+              {renderSkillCards(frontend)}
             </div>
           </div>
 
           {/* Tools */}
-          <div className="skills-group">
-            <h3 className="group-title">Tools & Ecosystem</h3>
-            <div className="pills-wrapper">
+          <div className="skills-group tools-group">
+            <h3 className="group-title">TOOLS & ECOSYSTEM</h3>
+            <div className="tools-badges-wrapper">
               {tools.map((tool, idx) => (
-                <div key={idx} className="skill-minimal-item tool-item">
+                <div key={idx} className="tool-badge">
                   {tool}
                 </div>
               ))}

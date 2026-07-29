@@ -5,7 +5,7 @@ export const portfolioData = {
     title: "Full-Stack Web Developer",
     subTitle: "Laravel & Modern Frontend Specialist",
     tagline: "Converting complex ideas into clean, high-performance web applications.",
-    bio: "Saya suka mengubah ide kompleks menjadi aplikasi web yang rapi, intuitif, dan fungsional. Berpengalaman dalam ekosistem Laravel dan Vue.js, saya menggabungkan backend yang kokoh dengan desain frontend yang estetis, interaktif, serta berfokus pada performa, keamanan, dan pengalaman pengguna yang luar biasa.",
+    bio: "Saya suka mengubah ide kompleks menjadi aplikasi web yang rapi, intuitif, dan fungsional. Berpengalaman dalam ekosistem Laravel, React, dan Vue.js, saya menggabungkan backend yang kokoh dengan desain frontend yang estetis, interaktif, serta berfokus pada performa, keamanan, dan pengalaman pengguna yang luar biasa.",
     location: "Banjarmasin, Kalimantan Selatan, Indonesia",
     status: "Available for Freelance & Full-time",
     statusType: "success",
@@ -31,14 +31,14 @@ export const portfolioData = {
     { label: "Tahun Pengalaman", value: "3+", icon: "Calendar" },
     { label: "Proyek Selesai", value: "15+", icon: "Code2" },
     { label: "Kepuasan Klien", value: "100%", icon: "Smile" },
-    { label: "Full-Stack Web", value: "Vue & Laravel", icon: "Layers" }
+    { label: "Modern Stack", value: "React, Vue, Laravel", icon: "Layers" }
   ],
 
   services: [
     {
       id: "web-saas",
       title: "Custom Web & SaaS Development",
-      description: "Pengembangan sistem web skala penuh menggunakan Laravel & Vue.js/Inertia dengan arsitektur bersih, aman, dan mudah diskalakan.",
+      description: "Pengembangan sistem web skala penuh menggunakan ekosistem Laravel, React, & Vue.js dengan arsitektur bersih, aman, dan mudah diskalakan.",
       icon: "Layers",
       badge: "Utama",
       features: ["Arsitektur Modular", "Multi-user Roles & Permissions", "Keamanan Teruji"]
@@ -322,11 +322,11 @@ export function useRealtimeVotes(initialVotes = {}) {
       { name: "JavaScript (ES6+) / Async JS", level: 88, experience: "DOM & Logic", icon: "FileCode" },
       { name: "Tailwind CSS & Modern Styling", level: 94, experience: "Custom Design Tokens", icon: "Palette" },
       { name: "HTML5 & Semantic Markup", level: 95, experience: "SEO Friendly", icon: "Globe" },
-      { name: "Inertia.js", level: 85, experience: "Laravel SPA Integration", icon: "RefreshCw" },
+      { name: "React.js / Next.js", level: 88, experience: "Hooks, SPA & UI Components", icon: "Code2" },
       { name: "Interactive Scratch & EdTech", level: 90, experience: "Media Pembelajaran", icon: "Gamepad2" }
     ],
     tools: [
-      "Git & GitHub", "Vite", "Laragon / Local Server", "Postman API", "Composer & npm", "Docker (Basic)", "VS Code", "Vercel / Netlify"
+      "Git & GitHub", "Vite", "Laragon / Local Server", "Postman API", "Composer & npm", "Docker (Basic)", "Antigravity", "Vercel / Netlify"
     ]
   },
 

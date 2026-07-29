@@ -1,59 +1,213 @@
 .about-section {
   position: relative;
-  padding: 8rem 0;
-  background-color: var(--bg-card); /* F3F4F6 */
+  padding: 8rem 0 12rem 0;
+  background-color: var(--bg-white);
   overflow: hidden;
 }
 
-.about-bg-text-wrapper {
+/* Giant Background Marquee */
+.about-bg-marquee {
   position: absolute;
-  top: 10%;
+  top: 15%;
   left: 0;
   width: 100%;
-  text-align: center;
-  z-index: 1;
+  overflow: visible;
   pointer-events: none;
-  opacity: 0.5;
+  z-index: 1;
+  opacity: 0.2;
 }
 
-.about-bg-text {
+.about-bg-text-inner {
+  white-space: nowrap;
   font-family: var(--font-display);
-  font-size: clamp(5rem, 18vw, 20rem);
-  color: #E5E7EB;
-  -webkit-text-stroke: 0;
-  margin: 0;
+  font-size: clamp(8rem, 25vw, 30rem);
+  font-weight: 900;
   line-height: 0.8;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-stroke: 4px var(--text-dark);
 }
 
 .about-container {
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
 }
 
 .about-header {
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
 }
 
-.about-content {
-  max-width: 900px;
-  align-self: center;
-  text-align: center;
-  margin-top: 2rem;
+/* Asymmetric Grid Layout */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
 }
 
-.about-huge-bio {
+/* Left Column: Bold Tagline */
+.about-left {
+  position: sticky;
+  top: 150px;
+}
+
+.about-tagline {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 4vw, 3rem);
-  font-weight: 500;
-  line-height: 1.4;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
   color: var(--text-dark);
-  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
 
-@media (max-width: 768px) {
-  .about-content {
-    text-align: left;
+/* Right Column: Bio & Stats */
+.about-right {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.about-bio-text {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  font-weight: 500;
+}
+
+.bio-word {
+  color: #D4D4D8; /* Sangat terang (hampir putih kusam) agar kontras saat disorot hitam */
+}
+
+/* Brutalist Stats Cards */
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background-color: var(--bg-white);
+  border: 2px solid var(--text-dark);
+  border-radius: 16px;
+  padding: 1.5rem;
+  /* Hard shadow for brutalist feel */
+  box-shadow: 6px 6px 0px rgba(9, 9, 11, 1);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  will-change: transform;
+}
+
+.stat-card:hover {
+  box-shadow: 12px 12px 0px rgba(9, 9, 11, 1);
+  border-color: var(--text-dark);
+}
+
+.stat-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: var(--bg-subtle);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
+  
+  .about-left {
+    position: relative;
+    top: 0;
+  }
+  
+  .about-bg-marquee {
+    top: 5%;
+  }
+  
+  .about-bg-text-inner {
+    -webkit-text-stroke-width: 2px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-card {
+    padding: 1.25rem;
+    box-shadow: 4px 4px 0px rgba(9, 9, 11, 1);
+  }
+  
+  .stat-card:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 3px 3px 0px rgba(9, 9, 11, 1);
+  }
+  
+  .about-section {
+    padding: 5rem 0 8rem 0;
+  }
+}
+
+/* Infinite Tech Stack Marquee (Solid Brutalist) */
+.tech-marquee-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--text-dark);
+  color: var(--bg-white);
+  padding: 1.5rem 0;
+  overflow: hidden;
+  display: flex;
+  white-space: nowrap;
+  border-top: 4px solid var(--text-dark);
+  border-bottom: 4px solid var(--text-dark);
+  z-index: 10;
+}
+
+.tech-marquee {
+  display: flex;
+  animation: marquee-scroll 20s linear infinite;
+}
+
+.tech-marquee span {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  padding-right: 1rem;
+  letter-spacing: 0.05em;
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
 }
