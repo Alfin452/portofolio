@@ -163,14 +163,15 @@
 }
 
 @media (max-width: 1024px) {
-  .nav-center, .btn-nav-cta {
+  .nav-center, .btn-nav-cta, .hide-mobile {
     display: none !important;
   }
   .nav-container {
     justify-content: space-between;
   }
   .availability-pill {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
+    white-space: nowrap;
   }
   .avail-text {
     font-size: 0.75rem;

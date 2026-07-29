@@ -128,6 +128,8 @@ const HeroSection = () => {
     // Native Scroll Parallax
     const handleScrollParallax = () => {
       if (!heroRef.current) return;
+      if (window.innerWidth <= 1024) return; // Disable heavy parallax on mobile
+      
       const scrolled = window.scrollY;
       const alfin = heroRef.current.querySelector('.bg-text-alfin');
       const huda = heroRef.current.querySelector('.bg-text-huda');

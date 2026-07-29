@@ -290,6 +290,10 @@
 }
 
 @media (max-width: 1024px) {
+  .noise-overlay {
+    display: none !important;
+  }
+  
   .hero-content-left {
     top: 25%;
     left: 5%;

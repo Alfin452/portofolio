@@ -28,7 +28,7 @@ const Navbar = () => {
           {/* Left: Availability Pill */}
           <div className="nav-left">
             <div className="availability-pill">
-              <span className="avail-text">Available for New Project</span>
+              <span className="avail-text">Available <span className="hide-mobile">for New Project</span></span>
             </div>
           </div>
 
