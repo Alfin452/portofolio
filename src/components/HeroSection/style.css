@@ -339,8 +339,14 @@
 
   .hero-bg-row {
     font-size: 18vw;
-    letter-spacing: normal; /* Fix Android webkit bug where negative letter-spacing collapses text stroke */
-    -webkit-text-stroke-width: 2px !important; /* Slightly thinner stroke on mobile so it doesn't look too chunky */
+    letter-spacing: normal !important;
+  }
+
+  /* Make text solid black on mobile to avoid all rendering bugs */
+  .dribbble-text-outline {
+    -webkit-text-stroke: 0px transparent !important;
+    color: var(--text-dark) !important;
+    text-shadow: none !important;
   }
 }
 
