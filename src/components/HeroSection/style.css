@@ -298,7 +298,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding-top: 18vh;
+    padding-top: 35vh; /* Pushed further down to clear the ALFIN HUDA background text */
     gap: 2rem;
   }
 
