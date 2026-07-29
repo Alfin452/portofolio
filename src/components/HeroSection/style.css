@@ -326,6 +326,23 @@
     order: 2;
   }
 
+  /* Make connect box vertical on mobile to avoid covering face */
+  .social-inline-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .connect-glass-box {
+    align-items: center;
+    padding: 1rem 0.75rem;
+    border-radius: 20px;
+  }
+
+  .connect-label {
+    font-size: 0.65rem;
+    margin-bottom: 0.25rem;
+  }
+
   .scroll-indicator-wrapper {
     bottom: 2%;
     left: 2%;
