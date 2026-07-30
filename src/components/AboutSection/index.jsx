@@ -100,7 +100,7 @@ const AboutSection = () => {
       {/* Giant Background Marquee */}
       <div className="about-bg-marquee">
         <div className="about-bg-text-inner">
-          <span className="dribbble-text-outline">KNOW ME KNOW ME KNOW ME KNOW ME</span>
+          {`KNOW ME  •  KNOW ME  •  KNOW ME  •  KNOW ME`}
         </div>
       </div>
 

@@ -20,15 +20,13 @@
 .skills-bg-text-inner {
   display: inline-block;
   will-change: transform;
-}
-
-.skills-text-outline {
   font-family: var(--font-display);
   font-size: clamp(8rem, 25vw, 30rem);
   font-weight: 900;
-  color: transparent;
-  -webkit-text-stroke: 4px var(--text-dark);
-  letter-spacing: -0.02em;
+  color: var(--bg-white) !important;
+  -webkit-text-stroke: 4px var(--text-dark) !important;
+  letter-spacing: 0.05em !important;
+  paint-order: stroke fill !important;
 }
 
 .skills-container {
@@ -71,14 +69,17 @@
 
 /* Brutalist Skill Card */
 .skill-brutalist-card {
-  background-color: var(--bg-white);
   border: 2px solid var(--text-dark);
   padding: 1.5rem;
+  background-color: var(--bg-white);
   box-shadow: 6px 6px 0px rgba(9, 9, 11, 1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 2rem;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+  position: relative;
+  cursor: crosshair; /* Brutalist touch */
 }
 
 .skill-brutalist-card:hover {
@@ -155,6 +156,34 @@
   color: var(--text-dark);
   width: 50px;
   text-align: right;
+}
+
+/* --- Tool Badges Infinite Marquee --- */
+.tools-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  /* Fade out edges for aesthetic effect */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.tools-marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: scrollTools 20s linear infinite;
+  padding: 1rem 0; /* extra padding to prevent clipping of hover states */
+}
+
+.tools-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollTools {
+  0% { transform: translateX(0); }
+  /* We shift exactly 50% since we duplicated the array and the gap is even */
+  100% { transform: translateX(calc(-50% - 0.75rem)); }
 }
 
 /* Tools Badges */

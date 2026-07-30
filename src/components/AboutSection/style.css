@@ -23,9 +23,10 @@
   font-size: clamp(8rem, 25vw, 30rem);
   font-weight: 900;
   line-height: 0.8;
-  letter-spacing: -0.02em;
-  color: transparent;
-  -webkit-text-stroke: 4px var(--text-dark);
+  letter-spacing: 0.05em !important;
+  color: var(--bg-white) !important;
+  -webkit-text-stroke: 4px var(--text-dark) !important;
+  paint-order: stroke fill !important;
 }
 
 .about-container {

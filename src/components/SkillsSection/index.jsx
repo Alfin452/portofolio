@@ -10,6 +10,48 @@ const SkillsSection = () => {
   const titleRef = useRef(null);
   const gridRef = useRef(null);
 
+  // Handlers for Magnetic Hover
+  const handleMagneticMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    
+    window.gsap.to(card, {
+      x: x * 0.1,
+      y: y * 0.1,
+      duration: 0.4,
+      ease: 'power3.out'
+    });
+  };
+
+  const handleMagneticLeave = (e) => {
+    const card = e.currentTarget;
+    window.gsap.to(card, {
+      x: 0,
+      y: 0,
+      duration: 0.7,
+      ease: 'elastic.out(1, 0.3)'
+    });
+  };
+
+  // Handler for Glitch Text
+  const handleGlitch = (e, targetLevel) => {
+    const el = e.currentTarget.querySelector('.skill-level-text');
+    if (!el) return;
+    
+    let iterations = 0;
+    const maxIterations = 8;
+    const interval = setInterval(() => {
+      el.innerText = Math.floor(Math.random() * 100) + '%';
+      iterations++;
+      if (iterations >= maxIterations) {
+        clearInterval(interval);
+        el.innerText = targetLevel + '%';
+      }
+    }, 40);
+  };
+
   useEffect(() => {
     const gsap = window.gsap;
     const ScrollTrigger = window.ScrollTrigger;
@@ -75,7 +117,13 @@ const SkillsSection = () => {
     return skillsArray.map((skill, idx) => {
       const IconComponent = LucideIcons[skill.icon];
       return (
-        <div key={idx} className="skill-brutalist-card">
+        <div 
+          key={idx} 
+          className="skill-brutalist-card"
+          onMouseMove={handleMagneticMove}
+          onMouseLeave={handleMagneticLeave}
+          onMouseEnter={(e) => handleGlitch(e, skill.level)}
+        >
           <div className="skill-card-header">
             <div className="skill-icon-wrapper">
               {IconComponent && <IconComponent size={24} strokeWidth={2} />}
@@ -106,7 +154,7 @@ const SkillsSection = () => {
       {/* Giant Background Marquee */}
       <div className="skills-bg-marquee">
         <div className="skills-bg-text-inner">
-          <span className="skills-text-outline">SKILLS SKILLS SKILLS SKILLS SKILLS</span>
+          {`SKILLS  •  SKILLS  •  SKILLS  •  SKILLS`}
         </div>
       </div>
 
@@ -136,12 +184,14 @@ const SkillsSection = () => {
           {/* Tools */}
           <div className="skills-group tools-group">
             <h3 className="group-title">TOOLS & ECOSYSTEM</h3>
-            <div className="tools-badges-wrapper">
-              {tools.map((tool, idx) => (
-                <div key={idx} className="tool-badge">
-                  {tool}
-                </div>
-              ))}
+            <div className="tools-marquee-container">
+              <div className="tools-marquee-track">
+                {[...tools, ...tools].map((tool, idx) => (
+                  <div key={idx} className="tool-badge">
+                    {tool}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
