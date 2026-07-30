@@ -186,9 +186,16 @@ const SkillsSection = () => {
             <h3 className="group-title">TOOLS & ECOSYSTEM</h3>
             <div className="tools-marquee-container">
               <div className="tools-marquee-track">
-                {[...tools, ...tools].map((tool, idx) => (
-                  <div key={idx} className="tool-badge">
-                    {tool}
+                {[...tools, ...tools, ...tools, ...tools].map((tool, idx) => (
+                  <div key={idx} className="tool-logo-wrapper" title={tool.name}>
+                    <img src={tool.logo} alt={tool.name} className="tool-logo-img" />
+                  </div>
+                ))}
+              </div>
+              <div className="tools-marquee-track" aria-hidden="true">
+                {[...tools, ...tools, ...tools, ...tools].map((tool, idx) => (
+                  <div key={idx} className="tool-logo-wrapper" title={tool.name}>
+                    <img src={tool.logo} alt={tool.name} className="tool-logo-img" />
                   </div>
                 ))}
               </div>

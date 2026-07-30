@@ -18,30 +18,36 @@ const HeroSection = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     let ctx = gsap.context(() => {
-      // Background Text animation (Cinematic slide in)
-      gsap.from('.hero-bg-row.left-align', {
-        x: -150,
-        opacity: 0,
-        duration: 1.5,
-        ease: 'power3.out',
-        clearProps: 'all'
-      });
+      // Master Timeline for clean, elegant sequencing
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      gsap.from('.hero-bg-row.right-align', {
-        x: 150,
+      // 1. Giant Background Text - ALFIN from left, then HUDA from right
+      tl.from('.hero-bg-row.left-align', {
+        x: -200,
         opacity: 0,
-        duration: 1.5,
-        ease: 'power3.out',
+        duration: 1.2,
         clearProps: 'all'
-      });
+      })
+      .from('.hero-bg-row.right-align', {
+        x: 200,
+        opacity: 0,
+        duration: 1.2,
+        clearProps: 'all'
+      }, "-=0.8") // HUDA starts slightly after ALFIN
+      
+      // 2. Center Image - Clean slide up from bottom
+      .from('.hero-cutout-img', {
+        y: 100,
+        opacity: 0,
+        duration: 1.2,
+        clearProps: 'all'
+      }, "-=0.8") // Image starts while HUDA is sliding in
 
-      // Cinematic text reveal for left side
-      gsap.from('.reveal-text', {
+      // 3. Cinematic Text Reveal (Full Stack Developer & Desc)
+      .from('.reveal-text', {
         y: '100%',
         duration: 1.2,
-        stagger: 0.2,
-        ease: 'power4.out',
-        delay: 0.2,
+        stagger: 0.15,
         clearProps: 'all',
         onComplete: () => {
           if (heroRef.current) {
@@ -50,28 +56,17 @@ const HeroSection = () => {
             });
           }
         }
-      });
+      }, "-=1.0") // Overlap with image reveal
 
-      // Image fade up
-      gsap.from('.hero-cutout-img', {
-        y: 50,
-        opacity: 0,
-        duration: 1.2,
-        ease: 'power3.out',
-        delay: 0.3,
-        clearProps: 'all'
-      });
-
-      // Right side staggered (New Icons)
-      gsap.from('.social-icon-btn, .scroll-indicator-wrapper', {
-        x: 20,
+      // 4. Floating UI Elements (Glass box, Socials, Scroll Indicator)
+      .from('.connect-glass-box, .social-icon-btn, .scroll-indicator-wrapper', {
+        y: 30,
         opacity: 0,
         duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out',
-        delay: 0.5,
+        stagger: 0.1,
         clearProps: 'all'
-      });
+      }, "-=0.8");
+
     }, heroRef);
 
     return () => ctx.revert();

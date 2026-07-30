@@ -326,7 +326,12 @@ export function useRealtimeVotes(initialVotes = {}) {
       { name: "Interactive Scratch & EdTech", level: 90, experience: "Media Pembelajaran", icon: "Gamepad2" }
     ],
     tools: [
-      "Git & GitHub", "Vite", "Laragon / Local Server", "Postman API", "Composer & npm", "Docker (Basic)", "Antigravity", "Vercel / Netlify"
+      { name: "Git", logo: "/logos/Git.png" },
+      { name: "GitHub", logo: "/logos/GitHub.png" },
+      { name: "Vite", logo: "/logos/Vite.svg" },
+      { name: "Postman", logo: "/logos/Postman.png" },
+      { name: "Docker", logo: "/logos/Docker.png" },
+      { name: "Antigravity", logo: "/logos/Google-Antigravity-Icon-Full-Color.png" }
     ]
   },
 
