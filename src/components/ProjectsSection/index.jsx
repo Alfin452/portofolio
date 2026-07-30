@@ -5,11 +5,14 @@ import './style.css';
 
 const ProjectsSection = () => {
   const projects = portfolioData.projects;
+  const featuredProject = portfolioData.featuredProject;
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
+  const featuredRef = useRef(null);
   const gridRef = useRef(null);
 
   // Extract unique categories for minimal tabs
@@ -17,6 +20,17 @@ const ProjectsSection = () => {
     const cats = new Set(projects.map(p => p.categorySlug));
     return ['all', ...Array.from(cats)].slice(0, 4); // Keep it minimal (4 tabs max)
   }, [projects]);
+
+  // Featured Project Image Carousel
+  useEffect(() => {
+    if (!featuredProject || !featuredProject.images) return;
+    
+    const interval = setInterval(() => {
+      setCurrentImageIndex(prev => (prev + 1) % featuredProject.images.length);
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [featuredProject]);
 
   const categoryNames = {
     'all': 'All',
@@ -61,6 +75,20 @@ const ProjectsSection = () => {
         }
       });
       
+      // Featured Project Reveal
+      if (featuredRef.current) {
+        const featTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: featuredRef.current,
+            start: 'top 75%'
+          }
+        });
+        
+        featTl.from('.featured-left', { x: -50, opacity: 0, duration: 1, ease: 'power3.out' })
+              .from('.featured-right', { x: 50, opacity: 0, duration: 1, ease: 'power3.out' }, "-=0.8")
+              .from('.featured-stat', { y: 20, opacity: 0, stagger: 0.1, duration: 0.6, ease: 'back.out' }, "-=0.5");
+      }
+
       // Grid items reveal
       gsap.from('.dribbble-project-card', {
         y: 50,
@@ -113,6 +141,65 @@ const ProjectsSection = () => {
             </a>
           </div>
         </div>
+
+        {/* --- FEATURED PROJECT HIGHLIGHT --- */}
+        {featuredProject && (
+          <div className="featured-project-container" ref={featuredRef}>
+            <div className="featured-left">
+              <div className="featured-badge">FLAGSHIP PROJECT</div>
+              <h3 className="featured-title">
+                {featuredProject.id === 'digivote-flagship' ? (
+                  <>Digi<span className="digivote-highlight">Vote</span></>
+                ) : (
+                  featuredProject.title
+                )}
+              </h3>
+              <h4 className="featured-tagline">{featuredProject.tagline}</h4>
+              <p className="featured-desc">{featuredProject.description}</p>
+              
+              <div className="featured-tech-stack">
+                {featuredProject.techStack.map((tech, idx) => (
+                  <span key={idx} className="tech-pill">{tech}</span>
+                ))}
+              </div>
+
+              <div className="featured-stats-row">
+                {featuredProject.stats.map((stat, idx) => (
+                  <div key={idx} className="featured-stat">
+                    <span className="stat-val">{stat.value}</span>
+                    <span className="stat-label">{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <a href={featuredProject.demoUrl} target="_blank" rel="noreferrer" className="btn-featured-visit">
+                Visit DigiVote
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </div>
+
+            <div className="featured-right">
+              <div className="featured-image-wrapper">
+                {featuredProject.images ? (
+                  featuredProject.images.map((imgSrc, idx) => (
+                    <img 
+                      key={idx}
+                      src={imgSrc} 
+                      alt={`${featuredProject.title} screenshot ${idx + 1}`}
+                      className={`carousel-image ${idx === currentImageIndex ? 'active' : ''}`}
+                    />
+                  ))
+                ) : (
+                  <img src={featuredProject.image} alt={featuredProject.title} />
+                )}
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Projects Grid */}
         <div className="dribbble-projects-grid" ref={gridRef}>

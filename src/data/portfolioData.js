@@ -85,30 +85,34 @@ export const portfolioData = {
     }
   ],
 
+  featuredProject: {
+    id: "digivote-flagship",
+    title: "DigiVote",
+    tagline: "The Infinite Voting Experience",
+    description: "Platform SaaS E-Voting premium berbasis web yang dirancang dengan Arsitektur Multi-Panel MVC di Laravel 12. Aplikasi ini mengutamakan performa tinggi dan interaktivitas.",
+    longDescription: "Sistem e-voting ini mengimplementasikan pemrosesan asinkron via Axios dan pembaruan data secara real-time (live leaderboard) memanfaatkan Laravel Reverb dan WebSockets. Terintegrasi langsung dengan Xendit Payment Gateway untuk layanan E-Voting Berbayar yang aman, transparan, dan terpercaya.",
+    images: [
+      "/images/projects/digivote-mockup.png",
+      "/images/projects/halamanevent.png",
+      "/images/projects/daftarevent.png",
+      "/images/projects/qris.png"
+    ],
+    demoUrl: "https://digivote.id/",
+    techStack: ["Laravel 12", "TALL Stack", "Reverb WebSockets", "Alpine.js", "Tailwind CSS", "Xendit Gateway"],
+    stats: [
+      { label: "Event Selesai", value: "8+" },
+      { label: "Total Suara Publik", value: "36,282" },
+      { label: "Live Update", value: "< 100ms" }
+    ],
+    features: [
+      "Arsitektur Multi-Panel MVC",
+      "Live Leaderboard Real-time",
+      "Asynchronous Processing (Axios)",
+      "Automated Payment Gateway (Xendit)"
+    ]
+  },
+
   projects: [
-    {
-      id: "digivote",
-      title: "Digivote - Real-Time E-Voting System",
-      category: "Real-time & WebSockets",
-      categorySlug: "realtime",
-      featured: true,
-      image: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&w=800&q=80",
-      description: "Platform pemungutan suara (e-voting) digital interaktif dengan pembaruan grafik perolehan suara secara real-time.",
-      longDescription: "Digivote adalah aplikasi voting digital berkinerja tinggi yang dirancang dengan Laravel & Laravel Reverb WebSockets. Memungkinkan pemilihan umum organisasi/sekolah secara transparan dengan autentikasi aman, penguncian token pemilih, dan dashboard visualisasi suara langsung tanpa refresh.",
-      tags: ["Laravel", "Laravel Reverb", "Redis", "Vue.js", "Tailwind CSS", "Chart.js"],
-      demoUrl: "#",
-      githubUrl: "https://github.com/Alfin452/digivote",
-      metrics: [
-        { label: "Update Speed", value: "< 100ms" },
-        { label: "Security Level", value: "Encrypted Tokens" },
-        { label: "Live Dashboard", value: "Real-time Reverb" }
-      ],
-      highlights: [
-        "Integrasi Laravel Reverb WebSockets untuk pembaruan grafik live.",
-        "Sistem enkripsi token pemilih untuk mencegah manipulasi suara.",
-        "Ekspor hasil voting ke format Excel (PhpSpreadsheet) & PDF report."
-      ]
-    },
     {
       id: "gibs-portal",
       title: "GIBS Integrated School & Clinic Portal",
