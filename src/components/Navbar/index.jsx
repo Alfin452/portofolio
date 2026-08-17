@@ -25,8 +25,11 @@ const Navbar = () => {
       <header className={`dribbble-navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           
-          {/* Left: Availability Pill */}
+          {/* Left: Availability Pill & Logo */}
           <div className="nav-left">
+            <div className="nav-logo-wrapper">
+              <img src="/assets/images/FD.jpg" alt="FD Solutions" className="nav-logo-img" />
+            </div>
             <div className="availability-pill">
               <span className="avail-text">Available <span className="hide-mobile">for New Project</span></span>
             </div>

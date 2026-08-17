@@ -18,32 +18,117 @@ const HeroSection = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     let ctx = gsap.context(() => {
-      // Master Timeline for clean, elegant sequencing
+      // PRELOADER TIMELINE (Sweaty Shop Style)
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      // 1. Giant Background Text - ALFIN from left, then HUDA from right
+      // Hide navbar initially (global selection since it's outside heroRef)
+      const navbarEl = document.querySelector('.dribbble-navbar');
+      if (navbarEl) {
+        tl.set(navbarEl, { opacity: 0, y: -50 });
+      }
+
+      const itemTargets = [
+        { x: "-32vw", y: "-15vh", rotation: -35 },
+        { x: "18vw", y: "-35vh", rotation: 22 },
+        { x: "-20vw", y: "32vh", rotation: 45 },
+        { x: "35vw", y: "20vh", rotation: -18 },
+        { x: "-42vw", y: "5vh", rotation: -10 },
+        { x: "40vw", y: "-10vh", rotation: 35 },
+        { x: "5vw", y: "40vh", rotation: -25 },
+        { x: "-10vw", y: "-42vh", rotation: 12 },
+      ];
+
+      const EXIT_DISTANCE = 3.5;
+      const itemExits = itemTargets.map((target) => ({
+        x: parseFloat(target.x) * EXIT_DISTANCE + "vw",
+        y: parseFloat(target.y) * EXIT_DISTANCE + "vh",
+        rotation: target.rotation * 2.5,
+      }));
+
+      const items = heroRef.current.querySelectorAll('.preloader-item');
+      const floatingTweens = [];
+
+      // 1. Reveal Circles
+      tl.to('.preloader-revealer', {
+        clipPath: "circle(100% at 50% 50%)",
+        duration: 1,
+        stagger: 0.25,
+        ease: "power2.inOut"
+      });
+
+      // 2. Scatter Items & Float
+      items.forEach((item, i) => {
+        const target = itemTargets[i];
+        tl.to(item, {
+          x: target.x,
+          y: target.y,
+          scale: 1,
+          rotation: target.rotation,
+          duration: 1,
+          ease: "power3.out",
+          onStart: () => {
+            floatingTweens[i] = gsap.to(item.querySelector('.preloader-img'), {
+              y: gsap.utils.random(-15, -25),
+              duration: gsap.utils.random(1.5, 2.5),
+              ease: "sine.inOut",
+              yoyo: true,
+              repeat: -1,
+              delay: gsap.utils.random(0, 0.5)
+            });
+          }
+        }, i === 0 ? "-=0.55" : "<0.075");
+      });
+
+      // Show logo
+      tl.fromTo('.preloader-logo', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, "<");
+      
+      tl.to({}, { duration: 0.8 }); // Wait a bit
+
+      // Kill floating tweens
+      tl.add(() => floatingTweens.forEach((tween) => tween.kill()));
+
+      // 3. Exit Items
+      items.forEach((item, i) => {
+        const exit = itemExits[i];
+        tl.to(item, {
+          x: exit.x,
+          y: exit.y,
+          scale: 2.5,
+          rotation: exit.rotation,
+          duration: 0.75,
+          ease: "power2.in"
+        }, i === 0 ? ">" : "<0.075");
+      });
+
+      // 4. Exit Logo
+      tl.to('.preloader-logo', { y: "-120vh", scale: 2.5, duration: 0.75, ease: "power2.in" }, "<");
+
+      // Hide preloader overlay completely
+      tl.set('.preloader-overlay', { display: 'none' });
+
+      // ============================================
+      // 5. HERO REVEAL (Existing animation)
+      // ============================================
       tl.from('.hero-bg-row.left-align', {
         x: -200,
         opacity: 0,
         duration: 1.2,
         clearProps: 'all'
-      })
+      }, "-=0.4")
       .from('.hero-bg-row.right-align', {
         x: 200,
         opacity: 0,
         duration: 1.2,
         clearProps: 'all'
-      }, "-=0.8") // HUDA starts slightly after ALFIN
+      }, "-=0.8") 
       
-      // 2. Center Image - Clean slide up from bottom
       .from('.hero-cutout-img', {
         y: 100,
         opacity: 0,
         duration: 1.2,
         clearProps: 'all'
-      }, "-=0.8") // Image starts while HUDA is sliding in
+      }, "-=0.8") 
 
-      // 3. Cinematic Text Reveal (Full Stack Developer & Desc)
       .from('.reveal-text', {
         y: '100%',
         duration: 1.2,
@@ -56,9 +141,8 @@ const HeroSection = () => {
             });
           }
         }
-      }, "-=1.0") // Overlap with image reveal
+      }, "-=1.0") 
 
-      // 4. Floating UI Elements (Glass box, Socials, Scroll Indicator)
       .from('.connect-glass-box, .social-icon-btn, .scroll-indicator-wrapper', {
         y: 30,
         opacity: 0,
@@ -66,6 +150,41 @@ const HeroSection = () => {
         stagger: 0.1,
         clearProps: 'all'
       }, "-=0.8");
+
+      if (navbarEl) {
+        tl.to(navbarEl, {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: 'power3.out',
+          clearProps: 'all'
+        }, "-=1.0");
+      }
+
+      // Smooth Parallax Effects
+      if (window.innerWidth > 1024) {
+        gsap.to('.bg-text-alfin', {
+          y: -250,
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.5 // Buttery smooth lag for parallax
+          }
+        });
+        
+        gsap.to('.bg-text-huda', {
+          y: 200,
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.5
+          }
+        });
+      }
 
     }, heroRef);
 
@@ -105,27 +224,8 @@ const HeroSection = () => {
       el.addEventListener('mouseleave', handleMagneticLeave);
     });
 
-    // Native Scroll Parallax
-    const handleScrollParallax = () => {
-      if (!heroRef.current) return;
-      if (window.innerWidth <= 1024) return; // Disable heavy parallax on mobile
-      
-      const scrolled = window.scrollY;
-      const alfin = heroRef.current.querySelector('.bg-text-alfin');
-      const huda = heroRef.current.querySelector('.bg-text-huda');
-      
-      if (alfin) {
-        alfin.style.transform = `translateY(${scrolled * -0.4}px)`;
-      }
-      if (huda) {
-        huda.style.transform = `translateY(${scrolled * 0.3}px)`;
-      }
-    };
-    
-    window.addEventListener('scroll', handleScrollParallax);
-
+    // Magnetic Elements Logic (kept as is)
     return () => {
-      window.removeEventListener('scroll', handleScrollParallax);
       magneticElements.forEach(el => {
         el.removeEventListener('mousemove', handleMagneticMove);
         el.removeEventListener('mouseleave', handleMagneticLeave);
@@ -135,6 +235,48 @@ const HeroSection = () => {
 
   return (
     <section className="hero-section" id="hero" ref={heroRef} style={{'--img-x': '50%', '--img-y': '50%'}}>
+      {/* ======================================= */}
+      {/* PRELOADER OVERLAY (Sweaty Shop Style) */}
+      {/* ======================================= */}
+      <div className="preloader-overlay">
+        <div className="preloader-bg"></div>
+        <div className="preloader-revealer preloader-revealer-1"></div>
+        <div className="preloader-revealer preloader-revealer-2"></div>
+        <div className="preloader-revealer preloader-revealer-3"></div>
+        <div className="preloader-revealer preloader-revealer-4"></div>
+
+        <div className="preloader-items">
+          <div className="preloader-item preloader-item-1">
+            <img src="/assets/images/Laravel.png" className="preloader-img" alt="Laravel" />
+          </div>
+          <div className="preloader-item preloader-item-2">
+            <img src="/logos/Google-Antigravity-Icon-Full-Color.png" className="preloader-img" alt="Antigravity" />
+          </div>
+          <div className="preloader-item preloader-item-3">
+            <img src="/logos/GitHub.png" className="preloader-img" alt="GitHub" />
+          </div>
+          <div className="preloader-item preloader-item-4">
+            <img src="/logos/React-icon.svg" className="preloader-img" alt="React" />
+          </div>
+          <div className="preloader-item preloader-item-5">
+            <img src="/logos/Docker.png" className="preloader-img" alt="Docker" />
+          </div>
+          <div className="preloader-item preloader-item-6">
+            <img src="/logos/Git.png" className="preloader-img" alt="Git" />
+          </div>
+          <div className="preloader-item preloader-item-7">
+            <img src="/logos/Postman.png" className="preloader-img" alt="Postman" />
+          </div>
+          <div className="preloader-item preloader-item-8">
+            <img src="/logos/Vite.svg" className="preloader-img" alt="Vite" />
+          </div>
+        </div>
+
+        <div className="preloader-logo">
+          <img src="/assets/images/FD.jpg" alt="FD Solutions" />
+        </div>
+      </div>
+
       {/* Noise Texture Overlay */}
       <div className="noise-overlay"></div>
 
