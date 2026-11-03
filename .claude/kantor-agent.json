@@ -1,0 +1,21 @@
+{
+  "title": "Portfolio Web - Virtual AI Office",
+  "port": 8788,
+  "names": {
+    "ketua": "Product Manager",
+    "team": [
+      "UI/UX Designer",
+      "Backend Engineer",
+      "Frontend Engineer",
+      "QA & Auditor"
+    ],
+    "freelancers": [
+      "DevOps Specialist",
+      "Security Auditor",
+      "Technical Writer",
+      "DBA Engineer"
+    ]
+  },
+  "autostart": false
+}
+

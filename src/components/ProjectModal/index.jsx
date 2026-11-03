@@ -60,7 +60,7 @@ const ProjectModal = ({ project, onClose }) => {
           <div className="tech-tags-box">
             <h4 className="box-title">Teknologi Yang Digunakan:</h4>
             <div className="tags-flex">
-              {project.tags.map((tag, tIdx) => (
+              {(project.tags || []).map((tag, tIdx) => (
                 <span key={tIdx} className="tech-tag-pill">
                   {tag}
                 </span>

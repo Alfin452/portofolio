@@ -85,31 +85,187 @@ export const portfolioData = {
     }
   ],
 
-  featuredProject: {
-    id: "digivote-flagship",
-    title: "DigiVote",
-    tagline: "The Infinite Voting Experience",
-    description: "Platform SaaS E-Voting premium berbasis web yang dirancang dengan Arsitektur Multi-Panel MVC di Laravel 12. Aplikasi ini mengutamakan performa tinggi dan interaktivitas.",
-    longDescription: "Sistem e-voting ini mengimplementasikan pemrosesan asinkron via Axios dan pembaruan data secara real-time (live leaderboard) memanfaatkan Laravel Reverb dan WebSockets. Terintegrasi langsung dengan Xendit Payment Gateway untuk layanan E-Voting Berbayar yang aman, transparan, dan terpercaya.",
-    images: [
-      "/images/projects/digivote-mockup.png",
-      "/images/projects/halamanevent.png",
-      "/images/projects/daftarevent.png",
-      "/images/projects/qris.png"
-    ],
-    demoUrl: "https://digivote.id/",
-    techStack: ["Laravel 12", "TALL Stack", "Reverb WebSockets", "Alpine.js", "Tailwind CSS", "Xendit Gateway"],
-    stats: [
-      { label: "Event Selesai", value: "8+" },
-      { label: "Total Suara Publik", value: "36,282" },
-      { label: "Live Update", value: "< 100ms" }
-    ],
-    features: [
-      "Arsitektur Multi-Panel MVC",
-      "Live Leaderboard Real-time",
-      "Asynchronous Processing (Axios)",
-      "Automated Payment Gateway (Xendit)"
-    ]
+  flagshipProjects: [
+    {
+      id: "digivote-flagship",
+      number: "01",
+      selectorTitle: "DigiVote.id",
+      selectorSubtitle: "E-Voting SaaS & WebSockets",
+      badge: "FLAGSHIP SAAS",
+      status: "Production Ready",
+      title: "DigiVote.id",
+      isDigiVote: true,
+      tagline: "The Infinite Voting Experience",
+      description: "Platform SaaS E-Voting premium berbasis web yang dirancang dengan Arsitektur Multi-Panel MVC di Laravel 12. Sistem mengimplementasikan live leaderboard real-time berlatensi ultra-rendah dan otomatisasi pembayaran QRIS via Xendit.",
+      longDescription: "DigiVote.id adalah platform SaaS e-voting enterprise yang dibangun menggunakan Laravel 12, Alpine.js, Tailwind CSS, dan Laravel Reverb WebSockets. Mengimplementasikan pemrosesan suara secara asinkron via Axios untuk memastikan performa puncak tanpa reload halaman saat ribuan pemilih aktif bersamaan. Dilengkapi integrasi langsung dengan Xendit Payment Gateway untuk layanan E-Voting Berbayar dengan verifikasi QRIS instan dan transparan.",
+      category: "Real-time SaaS & E-Voting",
+      categorySlug: "realtime",
+      browserUrl: "https://digivote.id",
+      demoUrl: "https://digivote.id/",
+      githubUrl: "https://github.com/Alfin452",
+      images: [
+        {
+          src: "/images/projects/digivote-mockup.png",
+          caption: "Multi-Panel Dashboard Mockup",
+          shortLabel: "Overview"
+        },
+        {
+          src: "/images/projects/halamanevent.png",
+          caption: "Live Event & Realtime Leaderboard",
+          shortLabel: "Live Event"
+        },
+        {
+          src: "/images/projects/daftarevent.png",
+          caption: "Event Management & Candidate Registry",
+          shortLabel: "Registry"
+        },
+        {
+          src: "/images/projects/qris.png",
+          caption: "Automated Dynamic QRIS Payment",
+          shortLabel: "QRIS Pay"
+        }
+      ],
+      image: "/images/projects/digivote-mockup.png",
+      techStack: ["Laravel 12", "TALL Stack", "Reverb WebSockets", "Alpine.js", "Tailwind CSS", "Xendit Gateway"],
+      tags: ["Laravel 12", "TALL Stack", "Reverb WebSockets", "Alpine.js", "Tailwind CSS", "Xendit Gateway"],
+      stats: [
+        { label: "Total Suara Publik", value: "36,282+" },
+        { label: "Event Terselenggara", value: "8+ Events" },
+        { label: "WebSocket Latency", value: "< 100ms" }
+      ],
+      metrics: [
+        { label: "Total Suara Publik", value: "36,282+" },
+        { label: "Event Terselenggara", value: "8+ Events" },
+        { label: "WebSocket Latency", value: "< 100ms" }
+      ],
+      features: [
+        "Arsitektur Multi-Panel MVC untuk Voter, Event Organizer, dan Superadmin",
+        "Live Leaderboard Real-time dengan broadcast Laravel Reverb WebSockets",
+        "Asynchronous Processing via Axios untuk load instan tanpa reload browser",
+        "Automated Payment Gateway Xendit & verifikasi QRIS real-time"
+      ],
+      highlights: [
+        "Arsitektur Multi-Panel MVC untuk Voter, Event Organizer, dan Superadmin",
+        "Live Leaderboard Real-time dengan broadcast Laravel Reverb WebSockets",
+        "Asynchronous Processing via Axios untuk load instan tanpa reload browser",
+        "Automated Payment Gateway Xendit & verifikasi QRIS real-time"
+      ]
+    },
+    {
+      id: "cbt-gibs-system",
+      number: "02",
+      selectorTitle: "CBT GIBS System",
+      selectorSubtitle: "Integrated School & CBT Exam",
+      badge: "ENTERPRISE SCHOOL SYSTEM",
+      status: "Active Deployment",
+      title: "CBT GIBS System",
+      isDigiVote: false,
+      tagline: "Integrated School Portal & Computer-Based Online Examination",
+      description: "Ekosistem sistem sekolah terpadu yang memadukan portal akademik santri (portal.gibs.sch.id), rekam medis klinik, serta Computer-Based Test (CBT) dengan auto-grading dan perlindungan anti-kecurangan real-time.",
+      longDescription: "Sistem ekosistem sekolah berskala besar untuk Global Islamic Boarding School (GIBS). Menghubungkan portal utama akademik, pencatatan rekam medis klinik sekolah, hingga sistem Computer-Based Test (CBT) yang dirancang untuk mencegah kecurangan ujian dengan proteksi blur lock, timer ter sinkronisasi server, pengacak nomor soal/opsi jawaban dinamis, serta rekapitulasi nilai instan ke format Excel.",
+      category: "Sistem Informasi Sekolah",
+      categorySlug: "school",
+      browserUrl: "https://portal.gibs.sch.id/cbt",
+      demoUrl: "https://portal.gibs.sch.id",
+      githubUrl: "https://github.com/Alfin452",
+      images: [
+        {
+          src: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80",
+          caption: "Computer-Based Test Examination Engine",
+          shortLabel: "CBT Engine"
+        },
+        {
+          src: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
+          caption: "GIBS Academic Portal & Clinic Medical Records",
+          shortLabel: "Portal & Klinik"
+        }
+      ],
+      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80",
+      techStack: ["Laravel", "PHP 8", "MySQL", "Vue.js", "Tailwind CSS", "Multi-Unit RBAC"],
+      tags: ["Laravel", "PHP 8", "MySQL", "Vue.js", "Tailwind CSS", "Multi-Unit RBAC"],
+      stats: [
+        { label: "Siswa & Staf Terdaftar", value: "1,200+" },
+        { label: "Auto Grading Engine", value: "Instant" },
+        { label: "Keamanan CBT", value: "Anti-Cheating" }
+      ],
+      metrics: [
+        { label: "Siswa & Staf Terdaftar", value: "1,200+" },
+        { label: "Auto Grading Engine", value: "Instant Result" },
+        { label: "Keamanan CBT", value: "Anti-Cheating Sync" }
+      ],
+      features: [
+        "Arsitektur terintegrasi multi-subdomain antar Portal GIBS, Klinik, dan Modul CBT",
+        "Engine ujian anti-kecurangan dengan deteksi tab switch & timer sync server",
+        "Pengacakan bank soal dan pilihan jawaban dinamis per santri",
+        "Kalkulasi nilai otomatis instan dan export rekap hasil ujian ke Excel"
+      ],
+      highlights: [
+        "Arsitektur terintegrasi multi-subdomain antar Portal GIBS, Klinik, dan Modul CBT",
+        "Engine ujian anti-kecurangan dengan deteksi tab switch & timer sync server",
+        "Pengacakan bank soal dan pilihan jawaban dinamis per santri",
+        "Kalkulasi nilai otomatis instan dan export rekap hasil ujian ke Excel"
+      ]
+    },
+    {
+      id: "e-koperasi",
+      number: "03",
+      selectorTitle: "E-Koperasi & KopDes",
+      selectorSubtitle: "Savings & Loans, POS & Ledger",
+      badge: "FINTECH & POS RETAIL",
+      status: "Operational",
+      title: "E-Koperasi & KopDes Store",
+      isDigiVote: false,
+      tagline: "Village Cooperative Savings & Loans, POS Inventory & Automated Ledger",
+      description: "Platform digitalisasi Koperasi Usaha Desa (KopDes) yang menggabungkan pembukuan simpan pinjam anggota, katalog produk UMKM lokal, mesin kasir Point of Sale (POS) dengan barcode scan, dan laporan neraca keuangan otomatis.",
+      longDescription: "Solusi digitalisasi koperasi usaha desa (KopDes). Memfasilitasi transaksi simpan pinjam anggota (simpanan pokok, wajib, sukarela), katalog produk UMKM lokal dengan payment gateway, sistem kasir transaksi dengan barcode scanner, dan laporan saldo berkala secara transparan siap audit.",
+      category: "POS & Koperasi Digital",
+      categorySlug: "business",
+      browserUrl: "https://kopdes.demo.id",
+      demoUrl: "#",
+      githubUrl: "https://github.com/Alfin452",
+      images: [
+        {
+          src: "https://images.unsplash.com/photo-1556742049-0a67d577c773?auto=format&fit=crop&w=1200&q=80",
+          caption: "Point of Sale Cashier & Village UMKM Store",
+          shortLabel: "POS Kasir"
+        },
+        {
+          src: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
+          caption: "Savings & Loans, Automated Ledger & SHU",
+          shortLabel: "Buku Kas & SHU"
+        }
+      ],
+      image: "https://images.unsplash.com/photo-1556742049-0a67d577c773?auto=format&fit=crop&w=1200&q=80",
+      techStack: ["Laravel", "MySQL", "Midtrans Payment", "Alpine.js", "Tailwind CSS"],
+      tags: ["Laravel", "MySQL", "Midtrans Payment", "Alpine.js", "Tailwind CSS"],
+      stats: [
+        { label: "Pencatatan Finansial", value: "Auto Ledger" },
+        { label: "Transaksi Kasir", value: "POS Barcode" },
+        { label: "Integrasi Pembayaran", value: "Midtrans QRIS" }
+      ],
+      metrics: [
+        { label: "Financial Reporting", value: "Automated Ledger" },
+        { label: "Point of Sale", value: "Fast Barcode Scan" },
+        { label: "Payment Gateway", value: "Midtrans QRIS" }
+      ],
+      features: [
+        "Pencatatan transaksi simpanan pokok, simpanan wajib, dan kalkulasi pinjaman anggota",
+        "Point of Sale (POS) kasir cepat dengan barcode scanner & invoice cetak struk",
+        "Katalog belanja produk desa dengan sistem checkout terintegrasi",
+        "Laporan neraca keuangan bulanan dan pembagian Sisa Hasil Usaha (SHU) otomatis"
+      ],
+      highlights: [
+        "Pencatatan transaksi simpanan pokok, simpanan wajib, dan kalkulasi pinjaman anggota",
+        "Point of Sale (POS) kasir cepat dengan barcode scanner & invoice cetak struk",
+        "Katalog belanja produk desa dengan sistem checkout terintegrasi",
+        "Laporan neraca keuangan bulanan dan pembagian Sisa Hasil Usaha (SHU) otomatis"
+      ]
+    }
+  ],
+
+  // Backward compatibility
+  get featuredProject() {
+    return this.flagshipProjects[0];
   },
 
   projects: [
