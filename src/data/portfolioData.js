@@ -102,7 +102,7 @@ export const portfolioData = {
       categorySlug: "realtime",
       browserUrl: "https://digivote.id",
       demoUrl: "https://digivote.id/",
-      githubUrl: "https://github.com/Alfin452",
+      githubUrl: null,
       images: [
         {
           src: "/images/projects/digivote-mockup.png",
@@ -463,35 +463,77 @@ export function useRealtimeVotes(initialVotes = {}) {
     isConnected.value = true
   })
 
+  onUnmounted(() => {
+    window.Echo.leaveChannel('election-updates')
+  })
+
   return { votes, isConnected }
+}`
+    },
+    {
+      id: "react-realtime-hook",
+      title: "React Custom Hook (Real-time Leaderboard)",
+      language: "jsx",
+      fileName: "useLiveLeaderboard.js",
+      code: `import { useState, useEffect } from 'react';
+
+export function useLiveLeaderboard(initialCandidates = []) {
+  const [candidates, setCandidates] = useState(initialCandidates);
+  const [latencyMs, setLatencyMs] = useState(42);
+
+  useEffect(() => {
+    const channel = window.Echo?.channel('election-updates');
+    if (!channel) return;
+
+    channel.listen('VoteCastEvent', (payload) => {
+      const sentAt = new Date(payload.timestamp).getTime();
+      setLatencyMs(Math.max(12, Date.now() - sentAt));
+
+      setCandidates((prev) =>
+        prev
+          .map((item) =>
+            item.id === payload.candidate_id
+              ? { ...item, votes: payload.total_votes }
+              : item
+          )
+          .sort((a, b) => b.votes - a.votes)
+      );
+    });
+
+    return () => window.Echo?.leaveChannel('election-updates');
+  }, []);
+
+  return { candidates, latencyMs };
 }`
     }
   ],
 
   skills: {
     backend: [
-      { name: "Laravel Framework", level: 92, experience: "12 / 11 / 10", icon: "Server" },
-      { name: "PHP (OOP / Architecture)", level: 90, experience: "3+ Tahun", icon: "Code" },
-      { name: "MySQL & Database Optimization", level: 88, experience: "Advanced Queries", icon: "Database" },
-      { name: "Laravel Reverb & WebSockets", level: 85, experience: "Real-time Apps", icon: "Zap" },
-      { name: "RESTful API Development", level: 90, experience: "JSON / Authentication", icon: "Link" },
-      { name: "Redis Caching", level: 80, experience: "Queue & Cache", icon: "Cpu" }
+      { name: "Laravel Framework", level: 92, experience: "12 / 11 / 10", icon: "Server", usedIn: "DigiVote.id • GIBS Portal • KopDes" },
+      { name: "PHP (OOP / Architecture)", level: 90, experience: "3+ Tahun", icon: "Code", usedIn: "Multi-Panel MVC & Service Pattern" },
+      { name: "MySQL & Database Optimization", level: 88, experience: "Advanced Queries", icon: "Database", usedIn: "1,200+ Siswa CBT & Auto-Ledger" },
+      { name: "Laravel Reverb & WebSockets", level: 85, experience: "Real-time Apps", icon: "Zap", usedIn: "Live Leaderboard < 100ms" },
+      { name: "RESTful API Development", level: 90, experience: "JSON / Authentication", icon: "Link", usedIn: "Xendit & Midtrans Webhook Sync" },
+      { name: "Redis Caching", level: 80, experience: "Queue & Cache", icon: "Cpu", usedIn: "High-Concurrency Vote Queue" }
     ],
     frontend: [
-      { name: "Vue.js 3 (Options & Composition API)", level: 88, experience: "SPA & Inertia", icon: "LayoutGrid" },
-      { name: "JavaScript (ES6+) / Async JS", level: 88, experience: "DOM & Logic", icon: "FileCode" },
-      { name: "Tailwind CSS & Modern Styling", level: 94, experience: "Custom Design Tokens", icon: "Palette" },
-      { name: "HTML5 & Semantic Markup", level: 95, experience: "SEO Friendly", icon: "Globe" },
-      { name: "React.js / Next.js", level: 88, experience: "Hooks, SPA & UI Components", icon: "Code2" },
-      { name: "Interactive Scratch & EdTech", level: 90, experience: "Media Pembelajaran", icon: "Gamepad2" }
+      { name: "Vue.js 3 (Options & Composition API)", level: 88, experience: "SPA & Inertia", icon: "LayoutGrid", usedIn: "CBT Exam Engine & E-Apotek" },
+      { name: "JavaScript (ES6+) / Async JS", level: 88, experience: "DOM & Logic", icon: "FileCode", usedIn: "Zero-Reload Axios & Timer Sync" },
+      { name: "Tailwind CSS & Modern Styling", level: 94, experience: "Custom Design Tokens", icon: "Palette", usedIn: "Design System & Brutalist UI" },
+      { name: "HTML5 & Semantic Markup", level: 95, experience: "SEO Friendly", icon: "Globe", usedIn: "WAI-ARIA & SEO Optimization" },
+      { name: "React.js / Next.js", level: 88, experience: "Hooks, SPA & UI Components", icon: "Code2", usedIn: "Interactive Portfolio & SaaS UI" },
+      { name: "Interactive Scratch & EdTech", level: 90, experience: "Media Pembelajaran", icon: "Gamepad2", usedIn: "Gamified Student Learning Modules" }
     ],
     tools: [
-      { name: "Git", logo: "/logos/Git.png" },
-      { name: "GitHub", logo: "/logos/GitHub.png" },
-      { name: "Vite", logo: "/logos/Vite.svg" },
-      { name: "Postman", logo: "/logos/Postman.png" },
-      { name: "Docker", logo: "/logos/Docker.png" },
-      { name: "Antigravity", logo: "/logos/Google-Antigravity-Icon-Full-Color.png" }
+      { name: "Laravel", role: "Backend Core", logo: "/assets/images/Laravel.png" },
+      { name: "React", role: "Frontend UI", logo: "/logos/React-icon.svg" },
+      { name: "Git", role: "Version Control", logo: "/logos/Git.png" },
+      { name: "GitHub", role: "Code & CI/CD", logo: "/logos/GitHub.png" },
+      { name: "Vite", role: "Frontend Bundler", logo: "/logos/Vite.svg" },
+      { name: "Postman", role: "API Testing", logo: "/logos/Postman.png" },
+      { name: "Docker", role: "Containerization", logo: "/logos/Docker.png" },
+      { name: "Antigravity", role: "Agentic AI IDE", logo: "/logos/Google-Antigravity-Icon-Full-Color.png" }
     ]
   },
 

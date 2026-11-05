@@ -1,3 +1,7 @@
+/* ==========================================================================
+   SKILLS SECTION — BRUTALIST EDITORIAL MONOCHROME
+   ========================================================================== */
+
 .skills-section {
   position: relative;
   padding: 8rem 0;
@@ -34,14 +38,79 @@
   z-index: 2;
 }
 
+/* --- Header & Interactive Stack Filter Bar --- */
 .skills-header {
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
 }
 
+.skills-header-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.skills-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.skills-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  padding: 0.35rem 0.9rem;
+  border: 2px solid var(--text-dark);
+  border-radius: 9999px;
+  background: var(--bg-white);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-dark);
+  box-shadow: 3px 3px 0px var(--text-dark);
+}
+
+.skills-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.skills-filter-btn {
+  padding: 0.55rem 1.15rem;
+  border: 2px solid var(--text-dark);
+  background: var(--bg-white);
+  color: var(--text-dark);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px var(--text-dark);
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.skills-filter-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--text-dark);
+}
+
+.skills-filter-btn.active {
+  background: var(--text-dark);
+  color: var(--bg-white);
+}
+
+/* --- Brutalist Grid & Group Headers --- */
 .skills-brutalist-grid {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 4.5rem;
 }
 
 .skills-group {
@@ -50,24 +119,62 @@
   gap: 2rem;
 }
 
+.group-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 4px solid var(--text-dark);
+  padding-bottom: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.group-title-left {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.group-index-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--text-dark);
+  color: var(--bg-white);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+}
+
 .group-title {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
   font-weight: 900;
   color: var(--text-dark);
-  border-bottom: 4px solid var(--text-dark);
-  padding-bottom: 1rem;
   text-transform: uppercase;
+  margin: 0;
+  line-height: 1.1;
 }
 
-/* Cards Wrapper */
+.group-count-pill {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  background: var(--bg-card);
+  border: 2px solid var(--text-dark);
+  padding: 0.25rem 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* --- Brutalist Skill Card with Dark Charcoal Hover Inversion (#1C1C1C) --- */
 .cards-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 1.75rem;
 }
 
-/* Brutalist Skill Card */
 .skill-brutalist-card {
   border: 2px solid var(--text-dark);
   padding: 1.5rem;
@@ -76,14 +183,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 2rem;
-  transition: box-shadow 0.3s ease, background 0.3s ease;
+  gap: 1.25rem;
   position: relative;
-  cursor: crosshair; /* Brutalist touch */
+  cursor: crosshair;
+  transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
 }
 
+/* No CSS transform on hover so GSAP magnetic hover remains smooth and conflict-free */
 .skill-brutalist-card:hover {
-  transform: translate(-4px, -4px);
+  background-color: #1C1C1C;
   box-shadow: 10px 10px 0px rgba(9, 9, 11, 1);
 }
 
@@ -92,23 +200,31 @@
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin: 0;
 }
 
 .skill-icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   background-color: var(--bg-card);
   border: 2px solid var(--text-dark);
   color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  transition: all 0.28s ease;
+}
+
+.skill-brutalist-card:hover .skill-icon-wrapper {
+  background-color: #27272A;
+  border-color: #FFFFFF;
+  color: #FFFFFF;
 }
 
 .skill-title-wrapper {
   flex: 1;
+  min-width: 0;
 }
 
 .skill-name {
@@ -117,15 +233,70 @@
   font-weight: 800;
   color: var(--text-dark);
   line-height: 1.2;
-  margin-bottom: 0.25rem;
+  margin: 0 0 0.25rem 0;
+  transition: color 0.28s ease;
+}
+
+.skill-brutalist-card:hover .skill-name {
+  color: #FFFFFF;
 }
 
 .skill-experience {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  margin: 0;
+  transition: color 0.28s ease;
+}
+
+.skill-brutalist-card:hover .skill-experience {
+  color: #A1A1AA;
+}
+
+.skill-index-badge {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  border: 1.5px solid var(--text-dark);
+  padding: 0.15rem 0.45rem;
+  background: var(--bg-card);
+  flex-shrink: 0;
+  transition: all 0.28s ease;
+}
+
+.skill-brutalist-card:hover .skill-index-badge {
+  background: #FFFFFF;
+  color: #09090B;
+  border-color: #FFFFFF;
+}
+
+/* Card Context Pill */
+.skill-card-context {
+  display: flex;
+  align-items: center;
+}
+
+.skill-context-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  background: #F4F4F5;
+  border: 1.5px solid var(--text-dark);
+  padding: 0.3rem 0.65rem;
+  transition: all 0.28s ease;
+}
+
+.skill-brutalist-card:hover .skill-context-pill {
+  background: #27272A;
+  color: #E4E4E7;
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 /* Card Footer (Progress Bar) */
@@ -140,13 +311,38 @@
   height: 16px;
   border: 2px solid var(--text-dark);
   background-color: transparent;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 18px,
+    rgba(9, 9, 11, 0.12) 18px,
+    rgba(9, 9, 11, 0.12) 20px
+  );
   position: relative;
+  overflow: hidden;
+  transition: border-color 0.28s ease, background-image 0.28s ease;
+}
+
+.skill-brutalist-card:hover .brutalist-progress-track {
+  border-color: #FFFFFF;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 18px,
+    rgba(255, 255, 255, 0.14) 18px,
+    rgba(255, 255, 255, 0.14) 20px
+  );
 }
 
 .brutalist-progress-fill {
   height: 100%;
-  background-color: var(--text-dark); /* Option A: Solid Black */
-  width: 0%; /* Set via JS */
+  background-color: var(--text-dark);
+  width: 0%;
+  transition: background-color 0.28s ease;
+}
+
+.skill-brutalist-card:hover .brutalist-progress-fill {
+  background-color: #FFFFFF;
 }
 
 .skill-level-text {
@@ -154,26 +350,152 @@
   font-size: 1.25rem;
   font-weight: 900;
   color: var(--text-dark);
-  width: 50px;
+  width: 52px;
   text-align: right;
+  transition: color 0.28s ease;
+}
+
+.skill-brutalist-card:hover .skill-level-text {
+  color: #FFFFFF;
+}
+
+/* --- Interactive Full-Stack Code Blueprint Terminal --- */
+.skills-code-blueprint {
+  border: 2px solid var(--text-dark);
+  background: #1C1C1C;
+  color: #FAFAFA;
+  box-shadow: 8px 8px 0px rgba(9, 9, 11, 1);
+  overflow: hidden;
+}
+
+.blueprint-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: #111113;
+  border-bottom: 2px solid var(--text-dark);
+  flex-wrap: wrap;
+}
+
+.blueprint-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.blueprint-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  background: #27272A;
+  color: #A1A1AA;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.blueprint-tab-btn:hover {
+  color: #FAFAFA;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.blueprint-tab-btn.active {
+  background: #FFFFFF;
+  color: #09090B;
+  border-color: #FFFFFF;
+  font-weight: 700;
+}
+
+.blueprint-tab-idx {
+  color: #FFFFFF;
+  font-weight: 800;
+}
+
+.blueprint-tab-btn.active .blueprint-tab-idx {
+  color: #09090B;
+}
+
+.blueprint-tab-lang {
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  padding: 0.1rem 0.35rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.blueprint-tab-btn.active .blueprint-tab-lang {
+  background: rgba(9, 9, 11, 0.1);
+}
+
+.blueprint-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.blueprint-pipeline-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #A1A1AA;
+}
+
+.blueprint-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  background: #FFFFFF;
+  color: #09090B;
+  border: 1.5px solid #09090B;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.blueprint-copy-btn:hover {
+  transform: translate(-1px, -1px);
+  background: #E4E4E7;
+}
+
+.blueprint-code-stage {
+  padding: 1.5rem;
+  overflow-x: auto;
+  background: #1C1C1C;
+}
+
+.blueprint-pre {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #E4E4E7;
 }
 
 /* --- Tool Badges Infinite Marquee --- */
 .tools-marquee-container {
-  display: flex; /* Critical for placing two tracks side by side */
+  display: flex;
   width: 100%;
   overflow: hidden;
   position: relative;
-  /* Fade out edges for aesthetic effect */
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  padding: 0.35rem 0;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
 .tools-marquee-track {
   display: flex;
   flex-shrink: 0;
   gap: 1.5rem;
-  padding-right: 1.5rem; /* Matches the gap so the next track flows perfectly */
+  padding-right: 1.5rem;
   animation: scrollTools 60s linear infinite;
   align-items: center;
 }
@@ -184,52 +506,119 @@
 
 @keyframes scrollTools {
   0% { transform: translateX(0); }
-  /* Shifts exactly its own width. The next identical track takes its place seamlessly */
   100% { transform: translateX(-100%); }
 }
 
-/* Tools Logos */
+/* Upgraded Tools Marquee Pills */
 .tool-logo-wrapper {
   background: var(--bg-white);
   border: 2px solid var(--text-dark);
-  padding: 1rem 1.5rem;
+  padding: 0.85rem 1.35rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.9rem;
   box-shadow: 4px 4px 0px rgba(9, 9, 11, 1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
   cursor: crosshair;
 }
 
 .tool-logo-wrapper:hover {
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0px rgba(9, 9, 11, 1);
+  background: #1C1C1C;
+  color: #FFFFFF;
+}
+
+.tool-img-box {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F4F4F5;
+  border: 1.5px solid var(--text-dark);
+  padding: 0.35rem;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.tool-logo-wrapper:hover .tool-img-box {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
 }
 
 .tool-logo-img {
-  height: 48px;
-  width: auto;
+  max-height: 100%;
+  max-width: 100%;
   object-fit: contain;
-  /* Optional: filter to make logos grayscale until hover if brutalist */
-  /* filter: grayscale(100%) contrast(1.2);
-  transition: filter 0.3s ease; */
+  filter: grayscale(100%) contrast(1.15);
+  transition: filter 0.25s ease;
 }
 
-/* .tool-logo-wrapper:hover .tool-logo-img {
-  filter: grayscale(0%);
-} */
+.tool-logo-wrapper:hover .tool-logo-img {
+  filter: grayscale(0%) contrast(1);
+}
 
-/* Responsive */
+.tool-meta-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.tool-name-label {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: inherit;
+  line-height: 1.1;
+}
+
+.tool-role-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+}
+
+.tool-logo-wrapper:hover .tool-role-label {
+  color: #A1A1AA;
+}
+
+/* --- Responsive Media Queries --- */
 @media (max-width: 768px) {
+  .skills-section {
+    padding: 5.5rem 0;
+  }
+
+  .skills-bg-marquee {
+    top: 5%;
+  }
+
+  .skills-bg-text-inner {
+    -webkit-text-stroke: 2px var(--text-dark) !important;
+  }
+
+  .skills-header {
+    margin-bottom: 2.75rem;
+  }
+
+  .skills-header-top {
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
   .cards-wrapper {
     grid-template-columns: 1fr;
   }
-  
-  .skills-bg-text-wrapper {
-    top: 5%;
+
+  .blueprint-topbar {
+    padding: 0.75rem 1rem;
   }
-  
-  .skills-bg-text {
-    -webkit-text-stroke-width: 2px;
+
+  .blueprint-code-stage {
+    padding: 1rem;
   }
 }
